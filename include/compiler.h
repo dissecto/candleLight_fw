@@ -52,14 +52,14 @@
 	} while (0)
 
 #define READ_ONCE(x) \
-	({ \
+	(__extension__ ({ \
 		__typeof(x) __var = ({ \
 			barrier(); \
 			ACCESS_ONCE(x); \
 		}); \
 		barrier(); \
 		__var; \
-	})
+	}))
 
 #define lockless_dereference(p) READ_ONCE(p)
 
@@ -69,10 +69,10 @@
 #define sizeof_field(_s, _m)	sizeof(((_s *)0)->_m)
 
 #define container_of(ptr, type, member) \
-	({ \
+	(__extension__ ({ \
 		__typeof(((type *)0)->member) *_p = (ptr); \
 		(type *)((char *)_p - offsetof(type, member)); \
-	})
+	}))
 
 #define struct_size(ptr, field, num) \
 	(offsetof(__typeof(*(ptr)), field) + sizeof((ptr)->field[0]) * (num))

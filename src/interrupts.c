@@ -65,7 +65,7 @@ extern uint32_t __StackTop;
 #if defined(STM32F0)
 __attribute__((used, section(".vectors")))
 const pFunc InterruptVectorTable[48] = {
-	(pFunc)(&__StackTop), // initial stack pointer
+	__extension__(pFunc)(&__StackTop), // initial stack pointer
 	Reset_Handler, // reset handler
 	NMI_Handler, // -14: NMI
 	HardFault_Handler, // -13: HardFault

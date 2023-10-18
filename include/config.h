@@ -72,6 +72,30 @@ THE SOFTWARE.
 	#define LEDTX_Mode				 GPIO_MODE_OUTPUT_OD
 	#define LEDTX_Active_High		 0
 
+#elif defined(BOARD_dissectoCanCard)
+	#define USBD_PRODUCT_STRING_FS	 (uint8_t*) "dissecto CAN-card USB to CAN adapter"
+	#define USBD_MANUFACTURER_STRING (uint8_t*) "dissecto GmbH"
+	#define DFU_INTERFACE_STRING_FS	 (uint8_t*) "dissecto CAN-card firmware upgrade interface"
+
+	#define TIM2_CLOCK_SPEED		 48000000
+
+	#define CAN_INTERFACE			 CAN
+	#define CAN_CLOCK_SPEED			 48000000
+	#define NUM_CAN_CHANNEL			 1
+
+	#define CAN_S_Pin				 GPIO_PIN_13
+	#define CAN_S_GPIO_Port			 GPIOC
+
+	#define LEDRX_Pin				 GPIO_PIN_0
+	#define LEDRX_Mode				 GPIO_MODE_OUTPUT_OD
+	#define LEDRX_GPIO_Port			 GPIOA
+	#define LEDRX_Active_High		 0
+
+	#define LEDTX_GPIO_Port			 GPIOA
+	#define LEDTX_Pin				 GPIO_PIN_1
+	#define LEDTX_Mode				 GPIO_MODE_OUTPUT_OD
+	#define LEDTX_Active_High		 0
+
 #elif defined(BOARD_CANable_MKS)
 	#define USBD_PRODUCT_STRING_FS	 (uint8_t*) "CANable-MKS gs_usb"
 	#define USBD_MANUFACTURER_STRING (uint8_t*) "makerbase"
